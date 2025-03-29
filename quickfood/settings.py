@@ -56,13 +56,13 @@ if DEBUG:
 
 AUTH_USER_MODEL = 'users.User'
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:3000", 
-    "https://*.railway.app"
-]
-CSRF_TRUSTED_ORIGINS=["http://localhost:5173","http://localhost:3000", "https://*.railway.app"]
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+#     "http://localhost:3000", 
+#     "https://*.railway.app"
+# ]
+CSRF_TRUSTED_ORIGINS=["http://localhost:5173","http://localhost:3000", "https://quickfood-backend-naoe.onrender.com"]
 CORS_ALLOW_CREDENTIALS = True
 
 
