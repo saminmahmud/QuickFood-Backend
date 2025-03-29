@@ -19,7 +19,7 @@ import random
 User = get_user_model()
 STORE_ID = getattr(settings, "STORE_ID", "Unset STORE_ID in Views")
 STORE_PASSWORD = getattr(settings, "STORE_PASSWORD", "Unset STORE_PASSWORD in Views")
-# Views for API endpoints related to Orders
+
 
 class OrderListAPIView(generics.ListCreateAPIView):
     queryset = Order.objects.all()
@@ -86,8 +86,8 @@ def Paymentview(request, order_id):
             except Order.DoesNotExist:
                 return JsonResponse({'error': 'Order not found or already paid'}, status=status.HTTP_404_NOT_FOUND)
 
-            # Create items related to the order and calculate the total price
-            total_price = 0  # Initialize total price
+           
+            total_price = 0  
 
             for item_data in items:
                 try:
@@ -99,7 +99,7 @@ def Paymentview(request, order_id):
                     return JsonResponse({'error': f"Restaurant with ID {item_data['restaurant']} not found."}, status=status.HTTP_400_BAD_REQUEST)
                 
                 quantity = item_data['quantity']
-                price = float(item_data['price'])  # Ensure price is a float
+                price = float(item_data['price'])  
 
                 # Create OrderItem
                 order_item = OrderItem.objects.create(
@@ -110,11 +110,10 @@ def Paymentview(request, order_id):
                     price=price
                 )
 
-                # Add the price to the total price of the order
                 total_price += price * quantity
-                total_price += 60  # Adding shipping cost, if any.
+                total_price += 60  
 
-            # Update the total price and save the order
+     
             order_qs.total_price = total_price
             order_qs.save()
 

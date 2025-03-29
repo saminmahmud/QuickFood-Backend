@@ -27,11 +27,3 @@ class MenuItemDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
 
-
-
-# from rest_framework import permissions
-
-# class IsRestaurantOwner(permissions.BasePermission):
-#     def has_object_permission(self, request, view, obj):
-#         return obj.owner == request.user
-# permission_classes = [IsAuthenticated, IsRestaurantOwner]
