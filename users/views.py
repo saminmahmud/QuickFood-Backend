@@ -8,6 +8,7 @@ from .serializers import SignupSerializer, LoginSerializer, UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework import generics
 from rest_framework.filters import SearchFilter
+from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -22,6 +23,9 @@ class UserDetailView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
 
 class SignupView(APIView):
+    authentication_classes = [] 
+    permission_classes = [] 
+
     def post(self, request):
         serializer = SignupSerializer(data=request.data)
         if serializer.is_valid():
@@ -31,6 +35,9 @@ class SignupView(APIView):
 
 
 class LoginView(APIView):
+    authentication_classes = [] 
+    permission_classes = [] 
+
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         
@@ -50,10 +57,9 @@ class LoginView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
-
 class LogoutView(APIView):
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [] 
+    permission_classes = [] 
 
     def post(self, request):
         try:
@@ -70,9 +76,13 @@ class LogoutView(APIView):
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
+    authentication_classes = [] 
+    permission_classes = [] 
     serializer_class = UserSerializer
 
 
 class CustomTokenRefreshView(TokenRefreshView):
-    pass
+    authentication_classes = [] 
+    permission_classes = [] 
+    
 

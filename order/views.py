@@ -12,6 +12,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import AllowAny
 import json
 import time
 import random
@@ -73,6 +75,8 @@ def generate_transaction_id():
 
 
 @csrf_exempt
+@authentication_classes([]) 
+@permission_classes([AllowAny])
 def Paymentview(request, order_id):
     if request.method == 'POST':
         try:
@@ -164,6 +168,8 @@ def Paymentview(request, order_id):
 
 # View to handle the success response from the payment gateway
 @csrf_exempt
+@authentication_classes([]) 
+@permission_classes([AllowAny])
 def Purchase(request, order_id, tran_id):
     order_qs = Order.objects.get(id=order_id, is_paid=False)
     
@@ -178,6 +184,8 @@ def Purchase(request, order_id, tran_id):
 
 # View to handle the failure or cancellation of the payment
 @csrf_exempt
+@authentication_classes([]) 
+@permission_classes([AllowAny])
 def Cancle_or_Fail(request, order_id):
     order_qs = Order.objects.get(id=order_id, is_paid=False)
     
