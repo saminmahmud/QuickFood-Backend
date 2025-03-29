@@ -62,8 +62,8 @@ AUTH_USER_MODEL = 'users.User'
 #     "http://localhost:3000", 
 #     "https://*.railway.app"
 # ]
-CSRF_TRUSTED_ORIGINS=["http://localhost:5173","http://localhost:3000", "https://quickfood-backend-naoe.onrender.com"]
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS=["http://localhost:5173","http://localhost:3000", "https://quickfood-backend-naoe.onrender.com", "https://*.railway.app"]
 
 
 
