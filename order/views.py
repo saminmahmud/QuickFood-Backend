@@ -136,9 +136,9 @@ def Paymentview(request, order_id):
                 'total_amount': order_total,
                 'currency': "BDT",
                 'tran_id': tran_id,
-                'success_url': f"http://localhost:8000/order/payment/purchase/{order_id}/{tran_id}/",
-                'fail_url': f"http://localhost:8000/order/payment/cancle-or-fail/{order_id}/",
-                'cancel_url': f"http://localhost:8000/order/payment/cancle-or-fail/{order_id}/",
+                'success_url': f"https://quickfood-backend.up.railway.app/order/payment/purchase/{order_id}/{tran_id}/",
+                'fail_url': f"https://quickfood-backend.up.railway.app/order/payment/cancle-or-fail/{order_id}/",
+                'cancel_url': f"https://quickfood-backend.up.railway.app/order/payment/cancle-or-fail/{order_id}/",
                 'emi_option': 0,
                 'cus_name': f'{order_qs.first_name} {order_qs.last_name}',
                 'cus_email': order_qs.email,
@@ -177,9 +177,9 @@ def Purchase(request, order_id, tran_id):
         order_qs.is_paid = True
         order_qs.tran_id = tran_id
         order_qs.save()
-        return HttpResponseRedirect('http://localhost:5173/my-orders?payment_status=success')
+        return HttpResponseRedirect('https://quick-food-omega.vercel.app/my-orders?payment_status=success')
 
-    return HttpResponseRedirect('http://localhost:5173/cart?payment_status=failed')
+    return HttpResponseRedirect('https://quick-food-omega.vercel.app/cart?payment_status=failed')
 
 
 # View to handle the failure or cancellation of the payment
@@ -191,6 +191,6 @@ def Cancle_or_Fail(request, order_id):
     
     if order_qs:
         order_qs.delete()
-        return HttpResponseRedirect('http://localhost:5173/cart?payment_status=failed')
+        return HttpResponseRedirect('https://quick-food-omega.vercel.app/cart?payment_status=failed')
 
-    return HttpResponseRedirect('http://localhost:5173/cart?payment_status=failed')
+    return HttpResponseRedirect('https://quick-food-omega.vercel.app/cart?payment_status=failed')
