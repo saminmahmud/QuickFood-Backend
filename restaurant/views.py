@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.filters import SearchFilter
-
+from rest_framework.permissions import IsAuthenticated
 from restaurant.models import MenuItem, Restaurant
 from restaurant.serializers import MenuItemSerializer, RestaurantSerializer
 
@@ -10,15 +10,21 @@ class RestaurantListAPIView(generics.ListCreateAPIView):
     serializer_class = RestaurantSerializer
     filter_backends = [SearchFilter]
     search_fields = ["owner__id"]
-    authentication_classes = [] 
-    permission_classes = [] 
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [] 
+        return [IsAuthenticated()]
 
 
 class RestaurantDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
-    authentication_classes = [] 
-    permission_classes = [] 
+    
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [] 
+        return [IsAuthenticated()]
 
 
 class MenuItemListAPIView(generics.ListCreateAPIView):
@@ -26,12 +32,18 @@ class MenuItemListAPIView(generics.ListCreateAPIView):
     serializer_class = MenuItemSerializer
     filter_backends = [SearchFilter]
     search_fields = ['restaurant__id']
-    authentication_classes = [] 
-    permission_classes = [] 
+    
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [] 
+        return [IsAuthenticated()]
 
 class MenuItemDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-    authentication_classes = [] 
-    permission_classes = [] 
+    
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [] 
+        return [IsAuthenticated()]
 
