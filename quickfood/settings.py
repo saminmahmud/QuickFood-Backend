@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'drf_spectacular',
     'restaurant',
     'order',
     'users'
@@ -56,7 +57,7 @@ if DEBUG:
 
 AUTH_USER_MODEL = 'users.User'
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173","http://localhost:3000", "https://quick-food-omega.vercel.app/", "https://*.railway.app"]
+# CORS_ALLOWED_ORIGINS = ["http://localhost:5173","http://localhost:3000", "https://quick-food-omega.vercel.app/", "https://*.railway.app"]
 CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS=["http://localhost:5173","http://localhost:3000", "https://quick-food-omega.vercel.app/", "https://*.railway.app"]
 
@@ -68,8 +69,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'QuickFood API',
+    'DESCRIPTION': 'The Online Food Delivery System allows users to browse restaurants, view menus, place orders, and track their delivery status. Restaurant owners can manage their menus and view orders.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
