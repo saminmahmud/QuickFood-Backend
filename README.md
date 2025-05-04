@@ -62,12 +62,12 @@ Users can browse restaurants, view menus, place orders, and track deliveries:
 ## Deployment
 
 - **Frontend (Live)**: [https://quick-food-omega.vercel.app/](https://quick-food-omega.vercel.app/)
-- **Backend (Live)**: [https://quickfood-backend.up.railway.app/](https://quickfood-backend.up.railway.app/)
+- **Backend (Live)**: [https://quickfood-backend-3lxu.onrender.com/](https://quickfood-backend-3lxu.onrender.com)
 
 ## API Documentation
 
-- **Swagger UI**: [https://quickfood-backend.up.railway.app/api/schema/swagger-ui/](https://quickfood-backend.up.railway.app/api/schema/swagger-ui/)
-- **Redoc**: [https://quickfood-backend.up.railway.app/api/schema/redoc/](https://quickfood-backend.up.railway.app/api/schema/redoc/)
+- **Swagger UI**: [https://quickfood-backend-3lxu.onrender.com/api/schema/swagger-ui/](https://quickfood-backend-3lxu.onrender.com/api/schema/swagger-ui/)
+- **Redoc**: [https://quickfood-backend-3lxu.onrender.com/api/schema/redoc/](https://quickfood-backend-3lxu.onrender.com/api/schema/redoc/)
 
 ## Setup Backend
 
@@ -80,7 +80,7 @@ git clone https://github.com/saminmahmud/QuickFood-Backend.git
 ### 2. Navigate to the backend folder and install dependencies:
 
 ```bash
-cd quickfood-backend
+cd Quickfood-Backend
 pip install -r requirements.txt
 ```
 ### 3. Set up your database (PostgreSQL) and configure the environment variables in .env.
